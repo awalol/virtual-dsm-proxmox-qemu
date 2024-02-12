@@ -25,8 +25,10 @@ sudo bash -c "$(curl https://raw.githubusercontent.com/awalol/virtual-dsm-proxmo
 
 1. 暂时不要创建任何磁盘。
 2. 添加一个串行接口，因为 DSM 控制台使用串行连接。
-   创建完成后，您的虚拟机设置应该类似于下图所示：
-   ![image](https://github.com/awalol/virtual-dsm-proxmox-qemu/assets/61059886/ea72f9c6-e133-4150-bbf6-d838721ea406)
+
+创建完成后，您的虚拟机设置应该类似于下图所示：
+
+![image](https://github.com/awalol/virtual-dsm-proxmox-qemu/assets/61059886/ea72f9c6-e133-4150-bbf6-d838721ea406)
 
 ### 3. 导入磁盘
 
@@ -45,6 +47,7 @@ qm importdisk 104 DSM_VirtualDSM_69057.system.img slot1-1T-DATA
 
 请注意导入镜像的顺序，您需要按正确的顺序添加硬盘。
 将 boot.img 设置为 scsi9，将 system.img 设置为scsi10，添加一个新的磁盘作为数据盘 设置为scsi11
+
 ![image](https://github.com/awalol/virtual-dsm-proxmox-qemu/assets/61059886/de5f9dfd-c78d-4de6-a1e8-5461fedbe6d3)
 
 然后，确保在 "选项 -> 引导顺序" 中启用了 scsi9 的引导选项。
@@ -57,8 +60,10 @@ qm importdisk 104 DSM_VirtualDSM_69057.system.img slot1-1T-DATA
 
 进入控制面板 -> 任务计划。
 创建一个新的触发任务，如下图所示：
+
 ![image](https://github.com/awalol/virtual-dsm-proxmox-qemu/assets/61059886/fdb4af53-2fe0-4279-9f94-1c1437d7adf3)
 ![image](https://github.com/awalol/virtual-dsm-proxmox-qemu/assets/61059886/05da2647-aaa7-488e-92b3-fed516ac5adf)
+
 最后，重新启动虚拟机以确保设置生效。
 
 #### 方法二：修改 /usr/lib/modules-load.d 
